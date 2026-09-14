@@ -1,5 +1,7 @@
-from src.masks import get_mask_account, get_mask_card_number
 from datetime import datetime
+
+from src.masks import get_mask_account, get_mask_card_number
+
 
 def mask_account_card(data: str) -> str:
     parts = data.split()
@@ -10,10 +12,12 @@ def mask_account_card(data: str) -> str:
     else:
         return f"{name} {get_mask_card_number(num)}"
 
+
 def get_date(date_string: str) -> str:
     date_obj = datetime.fromisoformat(date_string)
     parsed_date = datetime.strftime(date_obj, "%Y.%m.%d")
     return parsed_date
+
 
 if __name__ == "__main__":
     print(mask_account_card("Maestro 1596837868705199"))
