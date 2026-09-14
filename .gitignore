@@ -3,4 +3,3 @@ __pycache__/
 *.pyc
 .idea/
 .mypy_cache/
-.flake8
