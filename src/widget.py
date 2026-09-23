@@ -19,10 +19,3 @@ def get_date(date_string: str) -> str:
     date_obj = datetime.fromisoformat(date_string)
     parsed_date = datetime.strftime(date_obj, "%d.%m.%Y")
     return parsed_date
-
-
-if __name__ == "__main__":
-    print(mask_account_card("Maestro 1596837868705199"))
-    print(mask_account_card("Счет 64686473678894779589"))
-    print(mask_account_card("Visa Platinum 8990922113665229"))
-    print(get_date("2024-03-11T02:26:18.671407"))
