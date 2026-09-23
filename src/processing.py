@@ -21,9 +21,3 @@ operations = [
     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
 ]
-
-
-if __name__ == "__main__":
-    print(filter_by_state(operations, "EXECUTED"))
-    print(filter_by_state(operations, "CANCELED"))
-    print(sort_by_date(operations))
