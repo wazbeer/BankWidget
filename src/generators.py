@@ -1,24 +1,22 @@
-def filter_by_currency(transactions: list, currency: str):
+from typing import Any, Iterator
+
+
+def filter_by_currency(transactions: list[dict[str, Any]], currency: str = "USD") -> Iterator[dict[str, Any]]:
+    """Фильтрует транзакции по заданной валюте и возвращает итератор."""
     for transaction in transactions:
-        if transaction["operationAmount"]["currency"]["code"] == currency:
+        if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency:
             yield transaction
 
-def transaction_descriptions(transactions: list):
+
+def transaction_descriptions(transactions: list[dict[str, Any]]) -> Iterator[str]:
+    """Возвращает описания транзакций по очереди."""
     for transaction in transactions:
-        yield transaction["description"]
+        yield transaction.get("description", "")
 
-def card_number_generator(start: int, stop: int) -> str:
+
+def card_number_generator(start: int, stop: int) -> Iterator[str]:
+    """Генерирует номера карт в заданном диапазоне от start до stop."""
     for number in range(start, stop + 1):
-        number = str(number).zfill(16)
-        number = f"{number[0:4]} {number[4:8]} {number[8:12]} {number[12:16]}"
-        yield number
-
-if __name__ == "__main__":
-    usd = filter_by_currency(transactions, "USD")
-    print(next(usd))  # первая USD-транзакция
-    print(next(usd))  # вторая
-    descriptions = transaction_descriptions(transactions)
-    for i in range(5):
-        print(next(descriptions))
-    for card_number in card_number_generator(1, 5):
-        print(card_number)
+        num_str = str(number).zfill(16)
+        formatted_card = f"{num_str[0:4]} {num_str[4:8]} {num_str[8:12]} {num_str[12:16]}"
+        yield formatted_card

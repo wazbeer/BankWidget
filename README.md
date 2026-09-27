@@ -58,3 +58,15 @@ poetry run isort --check src
 Для запуска тестов выполните:
 
 poetry run pytest
+
+## Модуль generators
+
+### filter_by_currency(transactions, currency)
+Возвращает итератор транзакций с заданной валютой.
+
+### transaction_descriptions(transactions)
+Генератор описаний операций.
+
+### card_number_generator(start, stop)
+Генерирует номера карт в формате XXXX XXXX XXXX XXXX
+от start до stop включительно.

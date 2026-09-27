@@ -26,13 +26,13 @@ def test_filter_by_state_default(sample_operations: list[dict[str, Any]]) -> Non
 
 
 def test_sort_by_date_descending(sample_operations: list[dict[str, Any]]) -> None:
-    """Тестирует сортировку дат по убыванию""""
+    """Тестирует сортировку дат по убыванию"""
     result = sort_by_date(sample_operations)
     assert result[0]["id"] == 41428829
     assert result[-1]["id"] == 939719570
 
 
 def test_sort_by_date_ascending(sample_operations: list[dict[str, Any]]) -> None:
-    """Тестирует сортировку дат по возрастанию""""
+    """Тестирует сортировку дат по возрастанию"""
     result = sort_by_date(sample_operations, reverse=False)
     assert result[0]["id"] == 939719570

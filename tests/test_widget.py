@@ -12,7 +12,7 @@ from src.widget import get_date, mask_account_card
     ],
 )
 def test_mask_account_card(input_data: str, expected: str) -> None:
-    """"Тестиурет маску вместе с именем карты"""
+    """ "Тестиурет маску вместе с именем карты"""
     assert mask_account_card(input_data) == expected
 
 
@@ -25,5 +25,5 @@ def test_mask_account_card(input_data: str, expected: str) -> None:
     ],
 )
 def test_get_date(input_data: str, expected: str) -> None:
-    """Тестирует форматирование даты под РУ формат""""
+    """Тестирует форматирование даты под РУ формат"""
     assert get_date(input_data) == expected
