@@ -70,3 +70,40 @@ poetry run pytest
 ### card_number_generator(start, stop)
 Генерирует номера карт в формате XXXX XXXX XXXX XXXX
 от start до stop включительно.
+
+
+## Модуль декораторов (`src/decorators.py`)
+
+Модуль предоставляет декоратор `@log` для автоматического логирования работы функций.
+
+### Декоратор `@log`
+
+Логирует начало и конец выполнения функции, результат её работы, а также тип ошибки и входные параметры, если произошел сбой.
+
+#### Примеры использования:
+
+1. **Вывод логов в консоль (по умолчанию):**
+```python
+from src.decorators import log
+
+@log()
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
+# Вывод в консоль: my_function ok
+Запись логов в файл:
+Python
+
+from src.decorators import log
+
+@log(filename="mylog.txt")
+def divide(x, y):
+    return x / y
+
+divide(10, 2)
+# Лог дописывается в файл mylog.txt: divide ok
+
+divide(10, 0)
+# Лог с ошибкой дописывается в файл mylog.txt: 
+# divide error: ZeroDivisionError. Inputs: (10, 0), {}
