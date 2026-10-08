@@ -107,3 +107,14 @@ divide(10, 2)
 divide(10, 0)
 # Лог с ошибкой дописывается в файл mylog.txt: 
 # divide error: ZeroDivisionError. Inputs: (10, 0), {}
+
+### Модули `utils` и `external_api`
+
+* **`src/utils.py`**:
+  * `get_financial_transactions(path)` — безопасно читает JSON-файл с транзакциями и возвращает список словарей.
+
+* **`src/external_api.py`**:
+  * `convert_currency(transaction)` — принимает транзакцию и возвращает её сумму в рублях (`float`). Если валюта USD или EUR, делает запрос к Exchange Rates Data API.
+
+> **Настройка окружения:**
+> Для работы конвертера валют создайте файл `.env` в корне проекта по образцу `.env.example` и укажите ваш `API_KEY`.
