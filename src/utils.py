@@ -1,8 +1,14 @@
 import json
 import logging
-import os
+from pathlib import Path
 
-log_path = os.path.join("..", "logs", "utils.log")
+BASE_DIR = Path(__file__).resolve().parent.parent
+LOG_DIR = BASE_DIR / "logs"
+
+# Создаем папку logs, если ее еще нет
+LOG_DIR.mkdir(exist_ok=True)
+
+log_path = LOG_DIR / "utils.log"
 utils_logger = logging.getLogger(__name__)
 
 file_handler = logging.FileHandler(log_path, mode="w", encoding="utf-8")

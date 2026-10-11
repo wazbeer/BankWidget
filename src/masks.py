@@ -1,7 +1,12 @@
 import logging
-import os
+from pathlib import Path
 
-log_path = os.path.join("..", "logs", "masks.log")
+BASE_DIR = Path(__file__).resolve().parent.parent
+LOG_DIR = BASE_DIR / "logs"
+
+LOG_DIR.mkdir(exist_ok=True)
+
+log_path = LOG_DIR / "masks.log"
 mask_logger = logging.getLogger(__name__)
 
 file_handler = logging.FileHandler(log_path, mode="w", encoding="utf-8")
@@ -17,7 +22,7 @@ def get_mask_card_number(card_number: str) -> str:
     """Функция принимает на вход номер карты и возвращает ее маску"""
     mask_logger.info(f"Card mask attempt '{card_number}'")
 
-    if card_number is str:
+    if isinstance(card_number, str):
         masked = card_number[0:4] + " " + card_number[4:6] + "** **** " + card_number[12:16]
         mask_logger.info(f"Successful card mask attempt '{card_number}'")
         return masked
@@ -30,14 +35,10 @@ def get_mask_account(card_number: str) -> str:
     """Функция принимает на вход номер счета и возвращает его маску"""
     mask_logger.info(f"Account mask attempt '{card_number}'")
 
-    if card_number is str:
+    if isinstance(card_number, str):
         masked = "**" + card_number[-4:]
         mask_logger.info(f"Successful account mask attempt '{card_number}'")
         return masked
     else:
         mask_logger.error(f"Failed account mask attempt '{card_number}'")
         return ""
-
-
-if __name__ == "__main__":
-    print(get_mask_card_number("1234567891234567"))
