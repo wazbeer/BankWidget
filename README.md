@@ -50,3 +50,11 @@ poetry run mypy src
 poetry run black --check src
 
 poetry run isort --check src
+
+## Тестирование
+
+Проект покрыт автотестами с использованием `pytest`.
+
+Для запуска тестов выполните:
+
+poetry run pytest
