@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from src.decorators import log
@@ -32,7 +34,7 @@ def test_log_console_error(capsys: pytest.CaptureFixture) -> None:
     assert "Inputs: (1, 0)" in captured.out
 
 
-def test_log_file_success(tmp_path: pytest.TempPathFactory) -> None:
+def test_log_file_success(tmp_path: Path) -> None:
     """Тест успешного выполнения функции с записью лога в файл."""
     log_file = tmp_path / "test_log.txt"
 
@@ -48,7 +50,7 @@ def test_log_file_success(tmp_path: pytest.TempPathFactory) -> None:
     assert "multiply ok" in content
 
 
-def test_log_file_error(tmp_path: pytest.TempPathFactory) -> None:
+def test_log_file_error(tmp_path: Path) -> None:
     """Тест выполнения функции с ошибкой и записью лога в файл."""
     log_file = tmp_path / "test_log.txt"
 
