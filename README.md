@@ -102,9 +102,10 @@ def divide(x, y):
     return x / y
 
 divide(10, 2)
+```
+
 # Лог дописывается в файл mylog.txt: divide ok
 
-divide(10, 0)
 # Лог с ошибкой дописывается в файл mylog.txt: 
 # divide error: ZeroDivisionError. Inputs: (10, 0), {}
 
@@ -118,3 +119,30 @@ divide(10, 0)
 
 > **Настройка окружения:**
 > Для работы конвертера валют создайте файл `.env` в корне проекта по образцу `.env.example` и укажите ваш `API_KEY`.
+
+
+
+### Модуль `readers` (`src/readers.py`)
+
+Модуль предоставляет функции для чтения финансовых операций из файлов CSV и Excel.
+
+* **`csv_reader(csv_path)`** — принимает путь к CSV-файлу и возвращает список словарей с транзакциями.
+* **`excel_reader(excel_path)`** — принимает путь к XLSX-файлу и возвращает список словарей с транзакциями.
+
+#### Пример использования:
+
+```python
+from src.readers import csv_reader, excel_reader
+
+transactions_csv = csv_reader("data/transactions.csv")
+transactions_excel = excel_reader("data/transactions_excel.xlsx")
+
+
+
+---
+
+### Шаг 2. Проверь зависимости в `pyproject.toml`
+
+Критерий требует: *«Все необходимые для работы библиотеки добавлены в зависимости проекта»*.
+
+Убедись, что в `pyproject.toml` есть `pandas` и `openpyxl`. Если устанавливал их через `pip`, а не Poetry, выполни:
